@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.restaurant.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.restaurant.po.Menu" >
+    <id column="menu_id" property="menuId" jdbcType="INTEGER" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="menu_type" property="menuType" jdbcType="VARCHAR" />
+    <result column="menu_quantity" property="menuQuantity" jdbcType="INTEGER" />
+    <result column="menu_price" property="menuPrice" jdbcType="REAL" />
+    <result column="menu_note" property="menuNote" jdbcType="VARCHAR" />
+    <result column="menu_picture" property="menuPicture" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    menu_id, staff_id, menu_name, menu_type, menu_quantity, menu_price, menu_note, menu_picture
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guigu.restaurant.po.MenuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guigu.restaurant.po.MenuExample" >
+    delete from menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guigu.restaurant.po.Menu" >
+    insert into menu (menu_id, staff_id, menu_name, 
+      menu_type, menu_quantity, menu_price, 
+      menu_note, menu_picture)
+    values (#{menuId,jdbcType=INTEGER}, #{staffId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, 
+      #{menuType,jdbcType=VARCHAR}, #{menuQuantity,jdbcType=INTEGER}, #{menuPrice,jdbcType=REAL}, 
+      #{menuNote,jdbcType=VARCHAR}, #{menuPicture,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guigu.restaurant.po.Menu" >
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="menuType != null" >
+        menu_type,
+      </if>
+      <if test="menuQuantity != null" >
+        menu_quantity,
+      </if>
+      <if test="menuPrice != null" >
+        menu_price,
+      </if>
+      <if test="menuNote != null" >
+        menu_note,
+      </if>
+      <if test="menuPicture != null" >
+        menu_picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuQuantity != null" >
+        #{menuQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="menuPrice != null" >
+        #{menuPrice,jdbcType=REAL},
+      </if>
+      <if test="menuNote != null" >
+        #{menuNote,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPicture != null" >
+        #{menuPicture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guigu.restaurant.po.MenuExample" resultType="java.lang.Integer" >
+    select count(*) from menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update menu
+    <set >
+      <if test="record.menuId != null" >
+        menu_id = #{record.menuId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffId != null" >
+        staff_id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuName != null" >
+        menu_name = #{record.menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuType != null" >
+        menu_type = #{record.menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuQuantity != null" >
+        menu_quantity = #{record.menuQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuPrice != null" >
+        menu_price = #{record.menuPrice,jdbcType=REAL},
+      </if>
+      <if test="record.menuNote != null" >
+        menu_note = #{record.menuNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuPicture != null" >
+        menu_picture = #{record.menuPicture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update menu
+    set menu_id = #{record.menuId,jdbcType=INTEGER},
+      staff_id = #{record.staffId,jdbcType=INTEGER},
+      menu_name = #{record.menuName,jdbcType=VARCHAR},
+      menu_type = #{record.menuType,jdbcType=VARCHAR},
+      menu_quantity = #{record.menuQuantity,jdbcType=INTEGER},
+      menu_price = #{record.menuPrice,jdbcType=REAL},
+      menu_note = #{record.menuNote,jdbcType=VARCHAR},
+      menu_picture = #{record.menuPicture,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guigu.restaurant.po.Menu" >
+    update menu
+    <set >
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        menu_type = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuQuantity != null" >
+        menu_quantity = #{menuQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="menuPrice != null" >
+        menu_price = #{menuPrice,jdbcType=REAL},
+      </if>
+      <if test="menuNote != null" >
+        menu_note = #{menuNote,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPicture != null" >
+        menu_picture = #{menuPicture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guigu.restaurant.po.Menu" >
+    update menu
+    set staff_id = #{staffId,jdbcType=INTEGER},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=VARCHAR},
+      menu_quantity = #{menuQuantity,jdbcType=INTEGER},
+      menu_price = #{menuPrice,jdbcType=REAL},
+      menu_note = #{menuNote,jdbcType=VARCHAR},
+      menu_picture = #{menuPicture,jdbcType=VARCHAR}
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+</mapper>

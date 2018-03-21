@@ -1,0 +1,21 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/admin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/amazeui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/amazeui.flat.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/amazeui.flat.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/amazeui.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/app.css">
+
+<script src="${pageContext.request.contextPath}/resource/assets/js/polyfill/rem.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/polyfill/respond.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resource/assets/js/amazeui.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/amazeui.legacy.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/amazeui.legacy.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/amazeui.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/amazeui.widgets.helper.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/amazeui.widgets.helper.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/app.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/handlebars.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/jquery.min.js"></script>

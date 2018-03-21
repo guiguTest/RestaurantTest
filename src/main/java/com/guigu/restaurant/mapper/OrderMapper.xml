@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.restaurant.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.restaurant.po.Order" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="order_details" property="orderDetails" jdbcType="VARCHAR" />
+    <result column="order_state" property="orderState" jdbcType="VARCHAR" />
+    <result column="order_evaluate" property="orderEvaluate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_id, user_id, order_details, order_state, order_evaluate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guigu.restaurant.po.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guigu.restaurant.po.OrderExample" >
+    delete from order_
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guigu.restaurant.po.Order" >
+    insert into order_ (order_id, user_id, order_details, 
+      order_state, order_evaluate)
+    values (#{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderDetails,jdbcType=VARCHAR}, 
+      #{orderState,jdbcType=VARCHAR}, #{orderEvaluate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guigu.restaurant.po.Order" >
+    insert into order_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="orderDetails != null" >
+        order_details,
+      </if>
+      <if test="orderState != null" >
+        order_state,
+      </if>
+      <if test="orderEvaluate != null" >
+        order_evaluate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderDetails != null" >
+        #{orderDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="orderState != null" >
+        #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEvaluate != null" >
+        #{orderEvaluate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guigu.restaurant.po.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from order_
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_
+    <set >
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderDetails != null" >
+        order_details = #{record.orderDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderState != null" >
+        order_state = #{record.orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderEvaluate != null" >
+        order_evaluate = #{record.orderEvaluate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_
+    set order_id = #{record.orderId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      order_details = #{record.orderDetails,jdbcType=VARCHAR},
+      order_state = #{record.orderState,jdbcType=VARCHAR},
+      order_evaluate = #{record.orderEvaluate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guigu.restaurant.po.Order" >
+    update order_
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderDetails != null" >
+        order_details = #{orderDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="orderState != null" >
+        order_state = #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEvaluate != null" >
+        order_evaluate = #{orderEvaluate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guigu.restaurant.po.Order" >
+    update order_
+    set user_id = #{userId,jdbcType=INTEGER},
+      order_details = #{orderDetails,jdbcType=VARCHAR},
+      order_state = #{orderState,jdbcType=VARCHAR},
+      order_evaluate = #{orderEvaluate,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

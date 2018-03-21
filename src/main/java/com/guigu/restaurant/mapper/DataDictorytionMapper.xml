@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.restaurant.mapper.DataDictorytionMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.restaurant.po.DataDictorytion" >
+    <id column="data_id" property="dataId" jdbcType="INTEGER" />
+    <result column="data_note" property="dataNote" jdbcType="VARCHAR" />
+    <result column="data_detail" property="dataDetail" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    data_id, data_note, data_detail, note
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guigu.restaurant.po.DataDictorytionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from data_dictorytion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_dictorytion
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from data_dictorytion
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guigu.restaurant.po.DataDictorytionExample" >
+    delete from data_dictorytion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guigu.restaurant.po.DataDictorytion" >
+    insert into data_dictorytion (data_id, data_note, data_detail, 
+      note)
+    values (#{dataId,jdbcType=INTEGER}, #{dataNote,jdbcType=VARCHAR}, #{dataDetail,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guigu.restaurant.po.DataDictorytion" >
+    insert into data_dictorytion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="dataNote != null" >
+        data_note,
+      </if>
+      <if test="dataDetail != null" >
+        data_detail,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="dataNote != null" >
+        #{dataNote,jdbcType=VARCHAR},
+      </if>
+      <if test="dataDetail != null" >
+        #{dataDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guigu.restaurant.po.DataDictorytionExample" resultType="java.lang.Integer" >
+    select count(*) from data_dictorytion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update data_dictorytion
+    <set >
+      <if test="record.dataId != null" >
+        data_id = #{record.dataId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dataNote != null" >
+        data_note = #{record.dataNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataDetail != null" >
+        data_detail = #{record.dataDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.note != null" >
+        note = #{record.note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update data_dictorytion
+    set data_id = #{record.dataId,jdbcType=INTEGER},
+      data_note = #{record.dataNote,jdbcType=VARCHAR},
+      data_detail = #{record.dataDetail,jdbcType=VARCHAR},
+      note = #{record.note,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guigu.restaurant.po.DataDictorytion" >
+    update data_dictorytion
+    <set >
+      <if test="dataNote != null" >
+        data_note = #{dataNote,jdbcType=VARCHAR},
+      </if>
+      <if test="dataDetail != null" >
+        data_detail = #{dataDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guigu.restaurant.po.DataDictorytion" >
+    update data_dictorytion
+    set data_note = #{dataNote,jdbcType=VARCHAR},
+      data_detail = #{dataDetail,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where data_id = #{dataId,jdbcType=INTEGER}
+  </update>
+</mapper>
