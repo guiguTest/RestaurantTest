@@ -36,40 +36,8 @@
               <input type="text" name="loginId" value="${userLogin.loginId}" readonly="readonly" placeholder="编号">
             </div>
           </div>
-
-          <div class="am-form-group">
-            <label for="user-email" class="am-u-sm-3 am-form-label">注册用户名</label>
-            <div class="am-u-sm-9">
-              <input type="text" name="username" value="${userLogin.username}" placeholder="用户名">
-            </div>
-          </div>
-          
-          <div class="am-form-group">
-            <label for="user-email" class="am-u-sm-3 am-form-label">用户编号</label>
-            <div class="am-u-sm-9">
-              <input type="text" name="userId" value="${userLogin.userId}" placeholder="用户编号">
-            </div>
-          </div>
-
-          <div class="am-form-group">
-            <label for="user-phone" class="am-u-sm-3 am-form-label">密码</label>
-            <div class="am-u-sm-9">
-              <input type="password" name="password" value="${userLogin.password}" placeholder="密码">
-            </div>
-          </div>
-
-          <div class="am-form-group">
-            <label for="user-intro" class="am-u-sm-3 am-form-label">备注信息</label>
-            <div class="am-u-sm-9">
-              <textarea rows="5" name="note" placeholder="输入备注信息">${userLogin.note}</textarea>
-            </div>
-          </div>
-
-          <div class="am-form-group">
-            <div class="am-u-sm-9 am-u-sm-push-3">
-              <input type="submit" class="am-btn am-btn-primary" value="保存"/>
-            </div>
-          </div>
+ 
+         
       </div>
     </form>
     </div>

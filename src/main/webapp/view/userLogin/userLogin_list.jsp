@@ -59,11 +59,10 @@
       <div class="am-u-sm-12">
         <form class="am-form">
           <display:table class="am-table am-table-striped am-table-hover table-main" name="list" pagesize="10" requestURI="${pageContext.request.contextPath }/userLogin/list.action">
-          	<display:column property="userLogin.loginId" title="编号"></display:column>
-          	<display:column property="userLogin.username" title="用户账号" href="${pageContext.request.contextPath }/userLogin/show.action" paramId="loginId" paramProperty="userLogin.loginId"></display:column>
-          	<display:column property="user.userName" title="用户姓名"></display:column>
-          	<display:column paramId="userLogin.loginId" paramProperty="userLogin.loginId"  title="操作" value="修改" href="${pageContext.request.contextPath }/userLogin/load.action"  class="btn am-btn-default am-btn-xs am-text-secondary"></display:column>
-          	<display:column paramId="userLogin.loginId" href="${pageContext.request.contextPath }/userLogin/delete.action" paramProperty="userLogin.loginId" value="删除" class="delete btn am-btn-default am-btn-xs am-text-danger"></display:column>
+          	<display:column property="loginId" title="编号"></display:column>
+          	<display:column property="username" title="用户账号" href="${pageContext.request.contextPath }/userLogin/show.action" paramId="loginId" paramProperty="loginId"></display:column>
+          	<display:column paramId="loginId" paramProperty="loginId"  title="操作" value="修改" href="${pageContext.request.contextPath }/userLogin/load.action"  class="btn am-btn-default am-btn-xs am-text-secondary"></display:column>
+          	<display:column paramId="loginId" href="${pageContext.request.contextPath }/userLogin/delete.action" paramProperty="loginId" value="删除" class="delete btn am-btn-default am-btn-xs am-text-danger"></display:column>
           </display:table>
           <div class="am-cf">
 </div>

@@ -29,6 +29,7 @@ $(function() {
      */  
     $("#registForm").submit(function() {  
         var bool = true;//表示校验通过  
+        alter(1);
         if(!validateUserName()) {  
             bool = false;  
         }  
@@ -40,7 +41,8 @@ $(function() {
         }  
         if(!validateEmail()) {  
         	bool = false;  
-        }  
+        } 
+        alter("00");
         document.execCommand(bool);
         return bool;  
     });  

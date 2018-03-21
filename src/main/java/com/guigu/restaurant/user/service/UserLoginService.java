@@ -7,9 +7,9 @@ import com.guigu.restaurant.po.UserLogin;
 import com.guigu.restaurant.po.UserLoginOrder;
 
 public interface UserLoginService {
-	public List<UserLoginOrder> findUserList(UserLoginOrder userLoginOrder);
+	public List<UserLogin> findUserList(UserLogin userLogin);
 	
-	public UserLoginOrder finduserById(Integer userId);
+	public UserLogin finduserById(Integer userId);
 	
 	public boolean addUserLogin(UserLogin userLogin);
 	

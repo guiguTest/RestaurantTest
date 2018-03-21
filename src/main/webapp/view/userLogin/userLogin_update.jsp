@@ -33,37 +33,31 @@
           <div class="am-form-group">
             <label for="user-name" class="am-u-sm-3 am-form-label">注册编号</label>
             <div class="am-u-sm-9">
-              <input type="text" name="userLogin.loginId" value="${userLoginOrder.userLogin.loginId}" readonly="readonly" placeholder="编号">
+              <input type="text" name="loginId" value="${userLogin.loginId}" readonly="readonly" placeholder="编号">
             </div>
           </div>
 
           <div class="am-form-group">
             <label for="user-email" class="am-u-sm-3 am-form-label">注册用户名</label>
             <div class="am-u-sm-9">
-              <input type="text" name="userLogin.userName" value="${userLoginOrder.userLogin.userName}" placeholder="用户名">
+              <input type="text" name="username" value="${userLogin.username}" placeholder="用户名">
             </div>
           </div>
           
           <div class="am-form-group">
             <label for="user-phone" class="am-u-sm-3 am-form-label">密码</label>
             <div class="am-u-sm-9">
-              <input type="password" name="userLogin.password" value="${userLoginOrder.userLogin.password}" placeholder="密码">
+              <input type="password" name="password" value="${userLogin.password}" placeholder="密码">
             </div>
           </div>
 
           <div class="am-form-group">
             <label for="user-intro" class="am-u-sm-3 am-form-label">备注信息</label>
             <div class="am-u-sm-9">
-              <textarea rows="5" name="userLogin.note" placeholder="输入备注信息">${userLoginOrder.userLogin.note}</textarea>
+              <textarea rows="5" name="note" placeholder="输入备注信息">${userLogin.note}</textarea>
             </div>
           </div>
           
-          <div class="am-form-group">
-            <label for="user-email" class="am-u-sm-3 am-form-label">用户编号</label>
-            <div class="am-u-sm-9">
-              <input type="text" name="userId" value="${userLogin.userId}" placeholder="用户编号">
-            </div>
-          </div>
           
 
           <div class="am-form-group">

@@ -24,37 +24,22 @@ public class UserLoginServiceImpl implements UserLoginService{
 	@Resource(name="userMapper")
 	private UserMapper userMapper;
 	@Override
-	public List<UserLoginOrder> findUserList(UserLoginOrder userLoginOrder){
+	public List<UserLogin> findUserList(UserLogin userLogin){
 		UserLoginExample userLoginExample=new UserLoginExample();
 		Criteria criteria=userLoginExample.createCriteria();
-		if(userLoginOrder!=null) {
-			if(userLoginOrder.getUserLogin()!=null) {
-				if(userLoginOrder.getUserLogin().getUsername()!=null) {
-					criteria.andUsernameLike("%"+userLoginOrder.getUserLogin().getUsername()+"%");
+		if(userLogin!=null) {
+				if(userLogin.getUsername()!=null) {
+					criteria.andUsernameLike("%"+userLogin.getUsername()+"%");
 				}
-			}
 		}
 		List<UserLogin> list=userLoginMapper.selectByExample(userLoginExample);
-		List<UserLoginOrder> list2=new ArrayList<>();
-		for (UserLogin userLogin : list) {
-			Integer id= userLogin.getUserId();
-			User user=userMapper.selectByPrimaryKey(id);
-			UserLoginOrder userLoginOrder2=new UserLoginOrder();
-			userLoginOrder2.setUser(user);
-			userLoginOrder2.setUserLogin(userLogin);
-			list2.add(userLoginOrder2);
-		}
-		return list2;
+		return list;
 	}
 
-	public UserLoginOrder finduserById(Integer userId) {
+	public UserLogin finduserById(Integer userId) {
 		System.out.println(userId);
 		UserLogin userLogin=userLoginMapper.selectByPrimaryKey(userId);
-		User user=userMapper.selectByPrimaryKey(userLogin.getUserId());
-		UserLoginOrder userLoginOrder=new UserLoginOrder();
-		userLoginOrder.setUser(user);
-		userLoginOrder.setUserLogin(userLogin);
-		return userLoginOrder;
+		return userLogin;
 	}
 	@Override
 	public boolean addUserLogin(UserLogin userLogin) {

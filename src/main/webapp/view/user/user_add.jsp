@@ -49,7 +49,11 @@
           <div class="am-form-group">
             <label for="user-phone" class="am-u-sm-3 am-form-label">用户性别</label>
             <div class="am-u-sm-9">
-              <input type="text" class="inputClass" id="userSex" name="userSex" value="${user.userSex}" placeholder="用户性别">
+	              <select class="form-control input-sm" name="userSex">
+	                <option></option>
+	                <option ${user.userSex=='男'?'selected':'' }  value="男">男</option>
+	                <option ${user.userSex=='女'?'selected':'' }  value="女">女</option>
+	              </select>
               <small class="errorClass" id="userSexError">${errors.userSex}</small>
             </div>
           </div>
