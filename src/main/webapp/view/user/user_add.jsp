@@ -51,8 +51,8 @@
             <div class="am-u-sm-9">
 	              <select class="form-control input-sm" name="userSex">
 	                <option></option>
-	                <option ${user.userSex=='男'?'selected':'' }  value="男">男</option>
-	                <option ${user.userSex=='女'?'selected':'' }  value="女">女</option>
+	                <option ${user.userSex=='男'?'selected':''}  value="男">男</option>
+	                <option ${user.userSex=='女'?'selected':''}  value="女">女</option>
 	              </select>
               <small class="errorClass" id="userSexError">${errors.userSex}</small>
             </div>

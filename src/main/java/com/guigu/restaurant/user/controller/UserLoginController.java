@@ -19,7 +19,7 @@ import com.guigu.restaurant.user.service.UserService;
 public class UserLoginController {
 	@Resource(name="userLoginServiceImpl")
 	private UserLoginService userLoginService;
-	@Resource(name="userServiceImpl")
+	@Resource(name="userServiceimpl")
 	private UserService userService;
 	@RequestMapping("list.action")
 	public String findUserLoginList(Model model,UserLogin userLogin) {
